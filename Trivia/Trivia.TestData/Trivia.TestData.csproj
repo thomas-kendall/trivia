@@ -30,7 +30,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,28 +53,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestDataInitializer.cs" />
     <Compile Include="TestObjects\TestAnswer.cs" />
     <Compile Include="TestObjects\TestObject.cs" />
-    <Compile Include="TestObjects\TestPermission.cs" />
     <Compile Include="TestObjects\TestQuestion.cs" />
-    <Compile Include="TestObjects\TestRole.cs" />
-    <Compile Include="TestObjects\TestUser.cs" />
-    <Compile Include="TransferObjects\AnswerTO.cs" />
-    <Compile Include="TransferObjects\ITestDataManager.cs" />
-    <Compile Include="TransferObjects\PermissionTO.cs" />
-    <Compile Include="TransferObjects\QuestionTO.cs" />
-    <Compile Include="TransferObjects\RoleTO.cs" />
-    <Compile Include="TransferObjects\TestDataManager.cs" />
-    <Compile Include="TransferObjects\TransferObject.cs" />
-    <Compile Include="TransferObjects\UserTO.cs" />
+    <Compile Include="TestObjects\TestApplicationRole.cs" />
+    <Compile Include="TestObjects\TestApplicationUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Trivia.Core\Trivia.Core.csproj">
       <Project>{c698d24c-c03e-4d3c-b8a3-9d139bacea12}</Project>
       <Name>Trivia.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Trivia.DataAccess\Trivia.DataAccess.csproj">
+      <Project>{751744a4-89d6-434e-a6d0-c9dd0cee094d}</Project>
+      <Name>Trivia.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

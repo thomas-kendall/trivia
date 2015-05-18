@@ -6,50 +6,29 @@ using System.Linq;
 using Trivia.Core.Entities;
 using Trivia.DataAccess.EntityFramework;
 using Trivia.DataAccess.EntityFramework.Repository;
+using Trivia.TestData.TestObjects;
+using Trivia.Core.Repository;
 
 namespace Trivia.DataAccess.Tests.EntityFramework.Repository
 {
     [TestClass]
-    public class QuestionRepositoryTest
+    public class QuestionRepositoryTest : RepositoryTest<Question>
     {
-        [TestMethod]
-        public void Test_Create()
+        protected override IRepository<Question> GetRepository(TriviaDbContext dbContext)
         {
-            Database.SetInitializer<TriviaDbContext>(new DropCreateDatabaseAlways<TriviaDbContext>());
-            int questionId = 0;
-            string questionText = "Who invented the time machine?";
-            
+            return new QuestionRepository(dbContext);
+        }
 
-            // Test Create
-            using (var dbContext = new TriviaDbContext())
-            {
-                using (var repository = new EntityRepository<Question>(dbContext))
-                {
-                    var entity = new Question
-                    {
-                        Text = questionText,
-                    };
-                    repository.Create(entity);
-                    repository.Save();
-                    questionId = entity.Id;
-                }
-            }
-            // Verify Create
-            using (var dbContext = new TriviaDbContext())
-            {
-                using (var repository = new EntityRepository<Question>(dbContext))
-                {
-                    var allEntities = repository.GetAll();
-                    Assert.AreEqual(1, allEntities.Count());
-                    var entity = allEntities.First();
-                    Assert.AreEqual(questionText, entity.Text);
-                }
-            }
+        protected override int GetAllCount()
+        {
+            return TestQuestion.Entities.Count();
         }
 
         [TestMethod]
-        public void Test_GetAll()
+        public override void Test_GetAll()
         {
+            // This method must be here and call the base class because we can't have the [TestMethod] annotation on an inherited class.
+            base.Test_GetAll();
         }
     }
 }

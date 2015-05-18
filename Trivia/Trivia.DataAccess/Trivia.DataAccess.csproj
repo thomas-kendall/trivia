@@ -36,6 +36,12 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -48,10 +54,9 @@
   <ItemGroup>
     <Compile Include="EntityFramework\Repository\AnswerRepository.cs" />
     <Compile Include="EntityFramework\Repository\EntityRepository.cs" />
-    <Compile Include="EntityFramework\Repository\PermissionRepository.cs" />
     <Compile Include="EntityFramework\Repository\Repository.cs" />
-    <Compile Include="EntityFramework\Repository\RoleRepository.cs" />
-    <Compile Include="EntityFramework\Repository\UserRepository.cs" />
+    <Compile Include="EntityFramework\Repository\ApplicationRoleRepository.cs" />
+    <Compile Include="EntityFramework\Repository\ApplicationUserRepository.cs" />
     <Compile Include="EntityFramework\TriviaDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EntityFramework\Repository\QuestionRepository.cs" />
